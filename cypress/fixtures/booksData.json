@@ -1,0 +1,12 @@
+{
+  "book1": {
+    "format": "paper",
+    "title": "Na Drini ćuprija",
+    "isbn": "9788661050930",
+    "genres": ["Bosnia and Hercegovina"],
+    "authors": ["Ivo Andrić"],
+    "publisher": "",
+    "readingType": "free.reading",
+    "numberOfPages": 333
+  }
+}
