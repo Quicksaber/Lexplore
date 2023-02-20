@@ -1,5 +1,5 @@
 {
-  "book1": {
+  "validBook1": {
     "format": "paper",
     "title": "Na Drini ćuprija",
     "isbn": "9788661050930",
@@ -8,5 +8,26 @@
     "publisher": "",
     "readingType": "free.reading",
     "numberOfPages": 333
+  },
+  "genreLessBook": {
+    "format": "paper",
+    "title": "Na Drini ćuprija",
+    "isbn": "9788661050930",
+    "authors": ["Ivo Andrić"],
+    "publisher": "",
+    "readingType": "free.reading",
+    "numberOfPages": 333
+  },
+  "format": {
+    "paper": "paper",
+    "digital": "digital"
+  },
+  "readingType": {
+    "freeReading": "free.reading",
+    "readingScheme": "reading.scheme",
+    "groupReading": "group.reading"
+  },
+  "bookTitles": {
+    "Hobbit": "Hobbit"
   }
 }

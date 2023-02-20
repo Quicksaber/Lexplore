@@ -22,6 +22,7 @@ module.exports = {
     statusCode = 200,
     testMessage = Cypress.currentTest.title,
     title = generator.randomStringGenerator(4),
+    bookNumber = 0,
   }) {
     return cy
       .request({
@@ -30,10 +31,7 @@ module.exports = {
       })
       .then((response) => {
         colorValidation(response, testMessage, statusCode);
-        let res = response.body.items[0].volumeInfo;
-        // booksData.book1.authors = res.authors;
-        // booksData.book1.title = res.title;
-        // booksData.book1.numberOfPages = res.pageCount;
+        let res = response.body.items[bookNumber].volumeInfo;
         return res;
       });
   },
@@ -41,14 +39,33 @@ module.exports = {
   addBook({
     statusCode = 200,
     testMessage = Cypress.currentTest.title,
-    title = booksData.book1.title,
-    authors = booksData.book1.authors,
-    format = booksData.book1.format,
+    book = booksData.validBook1,
+    // title = booksData.book1.title,
+    // authors = booksData.book1.authors,
+    // pageNumber = booksData.book1.numberOfPages,
+    // isbn = data.strings.emptyString,
+    // genres = data.arrays.emptyArray,
+    // format = booksData.format.paper,
+    // readingType = booksData.readingType.freeReading,
   }) {
-    return cy.request({
-      method: "PUT",
-      url: `${Cypress.env("apiUrl")}books`,
-      body: {},
-    });
+    return cy
+      .request({
+        method: "PUT",
+        url: `${Cypress.env("apiUrl")}books`,
+        body: book,
+        // {
+        // format: format,
+        // title: title,
+        // isbn: isbn,
+        // genres: genres, // kad nema zanr, izbaci gresku ali napravi knjigu
+        // authors: authors,
+        // readingType: readingType,
+        // numberOfPages: pageNumber,
+        // },
+      })
+      .then((response) => {
+        colorValidation(response, testMessage, statusCode);
+        console.log(response.body);
+      });
   },
 };

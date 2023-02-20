@@ -7,4 +7,9 @@ module.exports = {
     }
     return name;
   },
+
+  randomNumberGenerator(digits) {
+    let number = Math.floor(Math.random() * 10 ** digits);
+    return number;
+  },
 };

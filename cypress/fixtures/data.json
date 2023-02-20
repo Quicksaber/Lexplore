@@ -1,5 +1,9 @@
 {
   "strings": {
     "emptyString": ""
+  },
+
+  "arrays": {
+    "emptyArray": []
   }
 }
