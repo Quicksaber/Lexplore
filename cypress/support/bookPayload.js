@@ -49,4 +49,34 @@ module.exports = {
 
     return book;
   },
+
+  activityDataMaker(details, pagesRead) {
+    let activity = {
+      readingActivityData: {},
+    };
+    activity.readingActivityData.bookId = details.readingDiaryBookUuid;
+    activity.readingActivityData.date = new Date();
+    activity.readingActivityData.comment = generator.randomStringGenerator(5);
+    activity.readingActivityData.difficultWords =
+      generator.randomArrayOfStrings(3, 4);
+    activity.readingActivityData.interestingWords =
+      generator.randomArrayOfStrings(3, 6);
+    activity.readingActivityData.readingCompanion =
+      booksData.readingCompanion.none;
+    activity.readingActivityData.likingLevel = Math.floor(Math.random() * 6);
+    activity.readingActivityData.understandingLevel = Math.floor(
+      Math.random() * 6
+    );
+    activity.readingActivityData.startPage = details.lastReadPage;
+    activity.readingActivityData.numberOfPages = details.numberOfPages;
+    activity.readingActivityData.minutesSpent =
+      generator.randomNumberGenerator(2);
+    activity.readingActivityData.readingSessionId =
+      generator.randomStringGenerator(9);
+    if (details.lastReadPage + pagesRead > details.numberOfPages) {
+      activity.readingActivityData.endPage = details.numberOfPages;
+    } else {
+      activity.readingActivityData.endPage = details.lastReadPage + pagesRead;
+    }
+  },
 };

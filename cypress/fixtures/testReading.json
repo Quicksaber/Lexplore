@@ -1,0 +1,38 @@
+{
+  "readingActivityData": {
+    "bookId": "f7802636-b100-11ed-ac71-000d3adb47e9",
+    "date": "2023-02-09T11:00:00.000Z",
+    "comment": "qwerewq",
+    "difficultWords": ["yes", "no"],
+    "interestingWords": ["nope", "no", "not"],
+    "readingCompanion": "none",
+    "likingLevel": 5,
+    "understandingLevel": 5,
+    "endPage": 125,
+    "minutesSpent": 10,
+    "startPage": 120,
+    "numberOfPages": 142,
+    "readingSessionId": "8pw4cwzpu"
+  },
+
+  "readingActivityDataLibraryBook": {
+    "bookId": 13887,
+    "userId": 256853,
+    "pages": [
+      {
+        "pageIndex": 6,
+        "duration": 16691,
+        "timeStamp": 1676891813
+      }
+    ],
+    "resumeInformation": {
+      "return-bookmark": {
+        "idref": "html4",
+        "contentCFI": "/4/14/1:0"
+      },
+      "font-size": 170,
+      "lastReadPage": 7
+    },
+    "readingSessionId": "khh7ws777"
+  }
+}

@@ -12,4 +12,18 @@ module.exports = {
     let number = Math.floor(Math.random() * 10 ** digits);
     return number;
   },
+
+  randomDate(start, end) {
+    return new Date(
+      start.getTime() + Math.random() * (end.getTime() - start.getTime())
+    );
+  },
+
+  randomArrayOfStrings(length, stringLength) {
+    let array = [];
+    for (i = 0; i < length; i++) {
+      array.push(this.randomStringGenerator(stringLength));
+    }
+    return array;
+  },
 };

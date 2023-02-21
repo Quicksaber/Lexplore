@@ -31,8 +31,7 @@ module.exports = {
       })
       .then((response) => {
         colorValidation(response, testMessage, statusCode);
-        let res = response.body.items[bookNumber].volumeInfo;
-        return res;
+        return response.body.items[bookNumber].volumeInfo;
       });
   },
 
@@ -40,32 +39,62 @@ module.exports = {
     statusCode = 200,
     testMessage = Cypress.currentTest.title,
     book = booksData.validBook1,
-    // title = booksData.book1.title,
-    // authors = booksData.book1.authors,
-    // pageNumber = booksData.book1.numberOfPages,
-    // isbn = data.strings.emptyString,
-    // genres = data.arrays.emptyArray,
-    // format = booksData.format.paper,
-    // readingType = booksData.readingType.freeReading,
   }) {
     return cy
       .request({
         method: "PUT",
         url: `${Cypress.env("apiUrl")}books`,
         body: book,
-        // {
-        // format: format,
-        // title: title,
-        // isbn: isbn,
-        // genres: genres, // kad nema zanr, izbaci gresku ali napravi knjigu
-        // authors: authors,
-        // readingType: readingType,
-        // numberOfPages: pageNumber,
-        // },
       })
       .then((response) => {
         colorValidation(response, testMessage, statusCode);
-        console.log(response.body);
+        return response.body.bookId;
       });
+  },
+
+  getBookDetails({
+    statusCode = 200,
+    testMessage = Cypress.currentTest.title,
+    bookId = data.strings.emptyString,
+  }) {
+    return cy
+      .request({
+        method: "GET",
+        url: `${Cypress.env("apiUrl")}books/${bookId}/details`,
+      })
+      .then((response) => {
+        colorValidation(response, testMessage, statusCode);
+        return response.body;
+      });
+  },
+
+  getReadingActivity({
+    statusCode = 200,
+    testMessage = Cypress.currentTest.title,
+    bookId = data.strings.emptyString,
+  }) {
+    return cy
+      .request({
+        method: "GET",
+        url: `${Cypress.env("apiUrl")}books/${bookId}/readingActivity`,
+      })
+      .then((response) => {
+        colorValidation(response, testMessage, statusCode);
+        return response.body;
+      });
+  },
+
+  logReading({
+    statusCode = 200,
+    testMessage = Cypress.currentTest.title,
+    bookId = data.strings.emptyString,
+    lastReadPage = 0,
+    numberOfPages = generator.randomNumberGenerator(3),
+  }) {
+    return cy.request({
+      method: "POST",
+      url: `${Cypress.env("apiUrl")}user/readProgress`,
+      body: booksData.activityData,
+    });
   },
 };

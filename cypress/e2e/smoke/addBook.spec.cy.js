@@ -30,10 +30,20 @@ describe("add book flow", () => {
         });
       });
   });
+  let bookId;
+  it("API-P0-04 Add valid book", () => {
+    user.addBook({}).then((response) => {
+      bookId = response;
+    });
+  });
 
-  it.only("API-P0-04 Add valid book", () => {
-    booksData.validBook1.title = generator.randomStringGenerator(5);
-    booksData.validBook1.isbn = generator.randomNumberGenerator(13).toString();
-    user.addBook({});
+  it("Get book last read page", () => {
+    user.getReadingActivity({
+      bookId: bookId,
+    });
+  });
+
+  it.only("test", () => {
+    user.logReading({});
   });
 });
